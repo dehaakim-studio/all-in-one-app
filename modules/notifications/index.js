@@ -35,13 +35,13 @@ export class NotificationModule {
       <div class="notifications-grid">
         <!-- Status Izin Push Notification Banner -->
         <div class="permission-banner-card glass-panel ${isGranted ? 'granted' : 'default'}">
-          <div style="display:flex; align-items:center; gap:16px;">
-            <div style="font-size:32px;">${isGranted ? '✅' : '🔔'}</div>
+          <div class="permission-banner-info">
+            <div style="font-size:32px; flex-shrink:0;">${isGranted ? '✅' : '🔔'}</div>
             <div>
               <div style="font-size:16px; font-weight:700;">
                 ${isGranted ? 'Browser Push Notifications Aktif' : 'Izin Notifikasi Browser Belum Aktif'}
               </div>
-              <div style="font-size:12.5px; color:var(--text-muted); margin-top:2px;">
+              <div style="font-size:12.5px; color:var(--text-muted); margin-top:2px; line-height:1.45;">
                 ${isGranted 
                   ? 'Aplikasi akan mengirimkan pengingat push otomatis ke desktop/ponsel Anda saat mendekati tenggat ganti oli.' 
                   : 'Aktifkan izin notifikasi agar browser dapat menampilkan peringatan saat mendekati batas 1 bulan ganti oli.'}
@@ -49,10 +49,10 @@ export class NotificationModule {
             </div>
           </div>
 
-          <div style="display:flex; gap:10px;">
+          <div class="permission-banner-actions">
             ${!isGranted ? `<button class="btn btn-primary" id="btn-request-perm">Aktifkan Push Notifikasi</button>` : ''}
-            <button class="btn btn-secondary btn-sm" id="btn-test-notif">⚡ Uji Coba Notifikasi</button>
-            <button class="btn btn-cyan btn-sm" id="btn-run-check">🔍 Periksa Jadwal Sekarang</button>
+            <button class="btn btn-secondary btn-sm" id="btn-test-notif">⚡ Uji Coba</button>
+            <button class="btn btn-cyan btn-sm" id="btn-run-check">🔍 Periksa Jadwal</button>
           </div>
         </div>
 

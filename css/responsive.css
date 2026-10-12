@@ -261,29 +261,87 @@
 
   /* --- MODULE 2: PRODUCTIVE TOOLS (SERVIS & OLI) MOBILE ADAPTATIONS --- */
   .vehicle-selector-bar {
-    padding: 12px 14px !important;
-    flex-direction: column;
+    padding: 14px !important;
+    flex-direction: column !important;
     align-items: stretch !important;
-    gap: 10px !important;
+    gap: 12px !important;
+  }
+
+  .vehicle-selector-left {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .vehicle-selector-label {
+    font-size: 11px !important;
+    color: var(--accent-cyan) !important;
+  }
+
+  .vehicle-selector-actions {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .vehicle-selector-actions .btn {
+    width: 100% !important;
+    justify-content: center !important;
+    min-height: 40px !important;
   }
 
   .vehicle-chips-list {
-    width: 100%;
-    overflow-x: auto;
-    padding-bottom: 4px;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    width: 100% !important;
+    overflow-x: auto !important;
+    padding-bottom: 6px !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+    display: flex !important;
+    gap: 8px !important;
   }
 
   .vehicle-chips-list::-webkit-scrollbar {
-    display: none;
+    display: none !important;
+  }
+
+  .vehicle-chip {
+    padding: 8px 14px !important;
+    font-size: 12.5px !important;
+    flex-shrink: 0 !important;
   }
 
   .vehicle-profile-banner {
     padding: 14px !important;
-    flex-direction: column;
-    align-items: flex-start !important;
-    gap: 10px;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+
+  .vehicle-profile-info {
+    width: 100% !important;
+  }
+
+  .vehicle-name-title {
+    font-size: 18px !important;
+  }
+
+  .vehicle-sub-meta {
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+  }
+
+  .vehicle-profile-actions {
+    display: grid !important;
+    grid-template-columns: 1fr auto !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .vehicle-profile-actions .btn {
+    min-height: 40px !important;
+    justify-content: center !important;
   }
 
   .component-status-grid {
@@ -295,18 +353,38 @@
     padding: 10px 12px !important;
   }
 
+  .ai-consult-trigger-card {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    padding: 14px !important;
+  }
+
+  .ai-consult-trigger-card .btn {
+    width: 100% !important;
+    min-height: 44px !important;
+    justify-content: center !important;
+  }
+
   .service-countdown-box {
     padding: 14px !important;
-    flex-direction: column;
-    align-items: flex-start !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
   }
 
   .countdown-main {
-    width: 100%;
+    width: 100% !important;
+    justify-content: flex-start !important;
+  }
+
+  .countdown-digits {
+    font-size: 20px !important;
   }
 
   .service-countdown-box .btn {
-    width: 100%;
+    width: 100% !important;
+    min-height: 44px !important;
   }
 
   .mandatory-rule-banner {
@@ -314,16 +392,118 @@
     gap: 10px !important;
   }
 
+  .form-submit-row {
+    width: 100% !important;
+  }
+
+  .form-submit-row .btn {
+    width: 100% !important;
+    min-height: 46px !important;
+    justify-content: center !important;
+  }
+
+  /* --- UNIVERSAL MOBILE CARD VIEW FOR TABLES --- */
+  .table-responsive {
+    border: none !important;
+    overflow-x: visible !important;
+  }
+
+  .data-table,
+  .data-table thead,
+  .data-table tbody,
+  .data-table th,
+  .data-table td,
+  .data-table tr {
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .data-table thead tr {
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .data-table tbody tr {
+    background: rgba(22, 29, 44, 0.75) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--radius-md) !important;
+    margin-bottom: 14px !important;
+    padding: 14px 16px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25) !important;
+  }
+
+  .data-table tbody tr:hover {
+    background: rgba(30, 39, 60, 0.85) !important;
+  }
+
+  .data-table td {
+    border: none !important;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.08) !important;
+    padding: 8px 0 !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    text-align: right !important;
+    font-size: 13.5px !important;
+    gap: 12px !important;
+    min-height: 38px !important;
+  }
+
+  .data-table td:last-child {
+    border-bottom: none !important;
+    padding-top: 10px !important;
+    padding-bottom: 2px !important;
+  }
+
+  .data-table td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--accent-cyan);
+    text-align: left;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .data-table td:not([data-label])::before {
+    display: none !important;
+  }
+
+  .history-item-title {
+    max-width: 180px !important;
+    text-align: right;
+  }
+
   /* --- MODULE 3: NOTIFICATIONS MOBILE ADAPTATIONS --- */
   .permission-banner-card {
     padding: 14px !important;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 14px !important;
   }
 
-  .permission-banner-card .btn {
-    width: 100%;
+  .permission-banner-info {
+    width: 100% !important;
+    gap: 12px !important;
+  }
+
+  .permission-banner-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .permission-banner-actions .btn {
+    width: 100% !important;
+    justify-content: center !important;
+    min-height: 42px !important;
   }
 
   .urgent-service-popup {

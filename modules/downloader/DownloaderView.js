@@ -435,21 +435,21 @@ export class DownloaderView {
 
         rows += `
           <tr data-history-id="${item.id}">
-            <td>
+            <td data-label="Media">
               <img src="${item.thumbnail}" class="history-thumb-mini" alt="Thumb" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200'">
             </td>
-            <td>
+            <td data-label="Judul">
               <div class="history-item-title" title="${item.title}">${item.title}</div>
               <div class="history-item-sub">${item.fileName}</div>
             </td>
-            <td><strong>${item.platform}</strong></td>
-            <td><span class="badge ${badgeClass}">${item.format} • ${item.quality}</span></td>
-            <td style="font-family:var(--font-mono);">${item.sizeMb} MB</td>
-            <td style="font-size:12px; color:var(--text-muted);">${dateStr}</td>
-            <td><span class="badge badge-emerald">✓ Tersimpan</span></td>
-            <td style="text-align: right;">
+            <td data-label="Platform"><strong>${item.platform}</strong></td>
+            <td data-label="Format"><span class="badge ${badgeClass}">${item.format} • ${item.quality}</span></td>
+            <td data-label="Ukuran" style="font-family:var(--font-mono);">${item.sizeMb} MB</td>
+            <td data-label="Waktu" style="font-size:12px; color:var(--text-muted);">${dateStr}</td>
+            <td data-label="Status"><span class="badge badge-emerald">✓ Tersimpan</span></td>
+            <td data-label="Aksi" style="text-align: right;">
               <div style="display:inline-flex; gap:6px;">
-                <a href="/api/download?url=${encodeURIComponent(item.url)}&ext=${(item.format || 'mp4').toLowerCase()}&quality=${encodeURIComponent(item.quality || '')}&title=${encodeURIComponent(item.title || '')}" download="${item.fileName}" class="btn btn-secondary btn-sm" title="Unduh File Langsung" style="text-decoration:none;">💾</a>
+                <a href="/api/download?url=${encodeURIComponent(item.url)}&ext=${(item.format || 'mp4').toLowerCase()}&quality=${encodeURIComponent(item.quality || '')}&title=${encodeURIComponent(item.title || '')}" download="${item.fileName}" class="btn btn-secondary btn-sm" title="Unduh File Langsung" style="text-decoration:none;">💾 Unduh</a>
                 <button class="btn btn-secondary btn-sm action-redownload" data-id="${item.id}" title="Analisis Ulang">🔄</button>
                 <button class="btn btn-outline btn-danger btn-sm action-delete" data-id="${item.id}" title="Hapus Riwayat">🗑️</button>
               </div>

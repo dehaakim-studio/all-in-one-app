@@ -55,13 +55,13 @@ export class ProductiveToolsView {
       <div class="productive-grid">
         <!-- Bar Pemilihan & Manajemen Kendaraan -->
         <div class="vehicle-selector-bar glass-panel">
-          <div style="display:flex; align-items:center; gap:12px;">
-            <span style="font-size:11px; text-transform:uppercase; letter-spacing:0.8px; color:var(--accent-cyan); font-weight:700;">Kendaraan Saya:</span>
+          <div class="vehicle-selector-left">
+            <span class="vehicle-selector-label">Kendaraan Saya:</span>
             <div class="vehicle-chips-list">
               ${chipsHtml}
             </div>
           </div>
-          <div style="display:flex; gap:8px;">
+          <div class="vehicle-selector-actions">
             <button class="btn btn-primary btn-sm" id="btn-add-vehicle">➕ Tambah Motor</button>
             <button class="btn btn-secondary btn-sm" id="btn-settings-gemini" title="Konfigurasi Gemini API Key">⚙️ API Gemini</button>
           </div>
@@ -70,15 +70,15 @@ export class ProductiveToolsView {
         <!-- 2 Kolom: Detail Kendaraan & Servis Form -->
         <div class="vehicle-dashboard-columns">
           <!-- Kolom Kiri: Profil Mesin, Riwayat Komponen, Gemini AI -->
-          <div style="display:flex; flex-direction:column; gap:20px;">
+          <div class="vehicle-column-left">
             <!-- Profil Banner -->
             <div class="card glass-panel">
               <div class="vehicle-profile-banner">
-                <div>
+                <div class="vehicle-profile-info">
                   <div class="vehicle-name-title">${v.name}</div>
                   <div class="vehicle-sub-meta">Tahun: ${v.year} • Odometer: ${v.currentKm.toLocaleString()} KM • ~${v.dailyKm || 30} KM/hari</div>
                 </div>
-                <div style="display:flex; gap:8px;">
+                <div class="vehicle-profile-actions">
                   <button class="btn btn-secondary btn-sm" id="btn-edit-vehicle">✏️ Edit</button>
                   <button class="btn btn-outline btn-danger btn-sm" id="btn-delete-vehicle">🗑️</button>
                 </div>
@@ -113,10 +113,10 @@ export class ProductiveToolsView {
               </div>
 
               <!-- Tombol Konsultasi Gemini AI -->
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px;">
-                <div>
-                  <div style="font-size:13px; font-weight:700; color:#c7d2fe;">Konsultasi Servis AI Cerdas</div>
-                  <div style="font-size:11.5px; color:var(--text-muted);">Menganalisis kondisi mesin & menghitung jadwal oli optimal</div>
+              <div class="ai-consult-trigger-card">
+                <div class="ai-consult-text-group">
+                  <div class="ai-consult-title">Konsultasi Servis AI Cerdas</div>
+                  <div class="ai-consult-desc">Menganalisis kondisi mesin & menghitung jadwal oli optimal</div>
                 </div>
                 <button class="btn btn-cyan" id="btn-trigger-gemini">
                   <span class="btn-text">🤖 Analisis Gemini AI</span>
@@ -217,7 +217,7 @@ export class ProductiveToolsView {
                   </div>
                 </div>
 
-                <div style="display:flex; justify-content:flex-end;">
+                <div class="form-submit-row">
                   <button type="submit" class="btn btn-emerald btn-lg" id="btn-save-service">
                     <span>💾 Simpan Riwayat Servis</span>
                   </button>
@@ -377,15 +377,15 @@ export class ProductiveToolsView {
 
       return `
         <tr>
-          <td><strong>${s.serviceDate}</strong></td>
-          <td><span class="badge badge-cyan">${s.nextDueDate}</span></td>
-          <td>${s.oilBrand}</td>
-          <td>${s.workshop || '-'}</td>
-          <td style="font-family:var(--font-mono);">Rp ${(s.cost || 0).toLocaleString('id-ID')}</td>
-          <td>${invoiceThumb}</td>
-          <td style="font-size:12px; color:var(--text-muted);">${s.notes || '-'}</td>
-          <td style="text-align:right;">
-            <button class="btn btn-outline btn-danger btn-sm action-delete-srv" data-id="${s.id}" title="Hapus catatan">🗑️</button>
+          <td data-label="Tgl Servis"><strong>${s.serviceDate}</strong></td>
+          <td data-label="Jadwal Berikutnya"><span class="badge badge-cyan">${s.nextDueDate}</span></td>
+          <td data-label="Jenis Oli"><span>${s.oilBrand}</span></td>
+          <td data-label="Bengkel"><span>${s.workshop || '-'}</span></td>
+          <td data-label="Biaya" style="font-family:var(--font-mono);"><span>Rp ${(s.cost || 0).toLocaleString('id-ID')}</span></td>
+          <td data-label="Nota Fisik">${invoiceThumb}</td>
+          <td data-label="Catatan" style="font-size:12px; color:var(--text-muted);"><span>${s.notes || '-'}</span></td>
+          <td data-label="Aksi" style="text-align:right;">
+            <button class="btn btn-outline btn-danger btn-sm action-delete-srv" data-id="${s.id}" title="Hapus catatan">🗑️ Hapus</button>
           </td>
         </tr>
       `;

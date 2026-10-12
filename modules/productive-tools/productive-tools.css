@@ -18,11 +18,37 @@
   flex-wrap: wrap;
 }
 
+.vehicle-selector-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.vehicle-selector-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--accent-cyan);
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.vehicle-selector-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
 .vehicle-chips-list {
   display: flex;
   gap: 10px;
   overflow-x: auto;
   align-items: center;
+  flex: 1;
+  min-width: 0;
 }
 
 .vehicle-chip {
@@ -82,6 +108,53 @@
   font-size: 13px;
   color: var(--text-muted);
   margin-top: 4px;
+}
+
+.vehicle-profile-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.vehicle-profile-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.ai-consult-trigger-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 14px;
+  padding: 14px 16px;
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: var(--radius-md);
+}
+
+.ai-consult-text-group {
+  flex: 1;
+  min-width: 0;
+}
+
+.ai-consult-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #c7d2fe;
+}
+
+.ai-consult-desc {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-top: 2px;
+}
+
+.form-submit-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
 }
 
 /* Component Status Badges Grid */
