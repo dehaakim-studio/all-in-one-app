@@ -31,3 +31,9 @@ Thumbs.db
 # Cache
 .cache/
 .parcel-cache/
+
+# Download cache (temp files dari server downloader)
+.downloads_cache/
+
+# Binary tools (platform-specific, tidak perlu di-commit)
+bin/
