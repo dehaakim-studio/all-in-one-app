@@ -1,0 +1,130 @@
+/* ==========================================================================
+   RESPONSIVE DESIGN & MOBILE BAR
+   ========================================================================== */
+
+/* Mobile Bottom Navigation Bar */
+.mobile-bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: rgba(14, 18, 28, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid var(--border-color);
+  z-index: 50;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 8px;
+}
+
+.mobile-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.mobile-nav-item .mobile-nav-icon {
+  font-size: 19px;
+  line-height: 1;
+}
+
+.mobile-nav-item.active {
+  color: var(--accent-cyan);
+}
+
+.mobile-nav-item.active .mobile-nav-icon {
+  transform: translateY(-2px);
+}
+
+.mobile-nav-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  width: 16px;
+  height: 3px;
+  background: var(--accent-cyan);
+  border-radius: 10px;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  :root {
+    --sidebar-width: 240px;
+  }
+  
+  .module-viewport {
+    padding: 20px 20px 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    transform: translateX(-100%);
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+  }
+
+  .app-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .sidebar-backdrop {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 39;
+  }
+
+  .sidebar-backdrop.active {
+    display: block;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .mobile-bottom-nav {
+    display: flex;
+  }
+
+  .app-header {
+    padding: 0 16px;
+  }
+
+  .module-viewport {
+    padding: 16px 14px 90px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .toast-container {
+    left: 16px;
+    right: 16px;
+    bottom: 74px;
+  }
+
+  .toast {
+    min-width: unset;
+    width: 100%;
+  }
+}

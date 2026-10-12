@@ -1,0 +1,305 @@
+/* ==========================================================================
+   MODULE 1: MEDIA DOWNLOADER STYLES
+   ========================================================================== */
+
+.downloader-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Directory Selection Banner */
+.directory-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: rgba(6, 182, 212, 0.08);
+  border: 1px dashed rgba(6, 182, 212, 0.35);
+  border-radius: var(--radius-md);
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.directory-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dir-icon {
+  font-size: 24px;
+}
+
+.dir-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--accent-cyan);
+  font-weight: 700;
+}
+
+.dir-path {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-main);
+  font-family: var(--font-mono);
+}
+
+/* URL Input Box */
+.downloader-input-card {
+  position: relative;
+}
+
+.url-input-wrapper {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.url-input-box {
+  position: relative;
+  flex: 1;
+}
+
+.url-input-box input {
+  padding-left: 44px;
+  padding-right: 90px;
+  height: 52px;
+  font-size: 15px;
+}
+
+.url-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: var(--text-dim);
+}
+
+.btn-paste {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.platform-pill-list {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.platform-pill {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.platform-pill:hover, .platform-pill.active {
+  background: rgba(99, 102, 241, 0.15);
+  color: #fff;
+  border-color: rgba(99, 102, 241, 0.4);
+}
+
+/* Media Preview & Configuration Card */
+.media-preview-card {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 24px;
+  background: rgba(18, 23, 35, 0.9);
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.media-thumbnail-container {
+  width: 100%;
+  height: 160px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+  background: #090c13;
+}
+
+.media-thumbnail-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.media-duration-badge {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.8);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.media-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.media-title-text {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.35;
+  margin-bottom: 6px;
+}
+
+.media-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.format-options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.format-card {
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.format-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.format-card.selected {
+  background: rgba(99, 102, 241, 0.18);
+  border-color: var(--accent-indigo);
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.3);
+}
+
+.format-badge-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-cyan);
+}
+
+.format-quality-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.format-size-text {
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+/* Download Progress Card */
+.download-progress-card {
+  padding: 20px;
+  background: rgba(18, 23, 35, 0.95);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.progress-status-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.progress-percent-text {
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  font-family: var(--font-mono);
+}
+
+.progress-stats-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 10px;
+  font-family: var(--font-mono);
+}
+
+/* History Table Styling */
+.history-thumb-mini {
+  width: 48px;
+  height: 36px;
+  border-radius: 6px;
+  object-fit: cover;
+  background: #000;
+}
+
+.history-item-title {
+  font-weight: 600;
+  color: #fff;
+  max-width: 280px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.history-item-sub {
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+@media (max-width: 768px) {
+  .media-preview-card {
+    grid-template-columns: 1fr;
+  }
+  .media-thumbnail-container {
+    height: 180px;
+  }
+  .url-input-wrapper {
+    flex-direction: column;
+  }
+  .url-input-box {
+    width: 100%;
+  }
+  .url-input-wrapper .btn {
+    width: 100%;
+  }
+}

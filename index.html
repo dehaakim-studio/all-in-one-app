@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All-in-One Utility | Platform Modular Media, Frame Studio & Servis Kendaraan</title>
+  <meta name="description" content="Aplikasi web serbaguna berbasis arsitektur modular yang memuat Media Downloader YouTube/TikTok, Frame Studio ATM Canva, Productive Tools Jadwal Oli Motor dengan Gemini AI, dan Notifikasi Otomatis.">
+  <meta name="theme-color" content="#0a0d14">
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Google Fonts: Outfit & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- Modular Styles -->
+  <link rel="stylesheet" href="modules/downloader/downloader.css">
+  <link rel="stylesheet" href="modules/frame-studio/frame-studio.css">
+  <link rel="stylesheet" href="modules/productive-tools/productive-tools.css">
+  <link rel="stylesheet" href="modules/notifications/notifications.css">
+</head>
+<body>
+  <!-- Ambient Ambient Glow Background -->
+  <div class="ambient-glow"></div>
+
+  <!-- Mobile Sidebar Backdrop -->
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="app-sidebar" id="app-sidebar">
+      <div class="sidebar-header">
+        <div class="app-logo-badge">⚡</div>
+        <div class="app-branding">
+          <h1>All-in-One Utility</h1>
+          <div class="app-subtitle">Modular & Extensible</div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav" id="sidebar-nav-container">
+        <!-- Dinamis di-render oleh ModuleRegistry / app.js -->
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="plugin-status-badge" id="btn-plugin-manager" style="cursor: pointer;" title="Klik untuk membuka Pengelola Modul">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="plugin-dot"></span>
+            <span>Plugin Extensible</span>
+          </div>
+          <span style="font-size: 11px; color: var(--accent-cyan); font-weight: 700;">Kelola ⚙️</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Workspace Area -->
+    <main class="app-main">
+      <!-- Top Application Header -->
+      <header class="app-header">
+        <div class="header-left">
+          <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Buka Menu">☰</button>
+          <div class="header-page-title">
+            <h2 id="header-title-text">Memuat Modul...</h2>
+            <p id="header-desc-text">Platform utilitas canggih terintegrasi</p>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <a href="#notifications" class="btn btn-secondary btn-icon" title="Pusat Notifikasi">
+            <span>🔔</span>
+          </a>
+        </div>
+      </header>
+
+      <!-- Dynamic Module Viewport -->
+      <div class="module-viewport" id="module-viewport">
+        <div class="module-loading-state">
+          <div class="spinner"></div>
+          <p>Memulai modul All-in-One Utility...</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Mobile Bottom Navigation Bar -->
+  <nav class="mobile-bottom-nav" id="mobile-bottom-nav-container">
+    <!-- Diisi otomatis oleh App navigation renderer -->
+  </nav>
+
+  <!-- Modal Ekstensibilitas Plugin / Info Modul Tambahan -->
+  <div class="modal-overlay" id="plugin-manager-modal">
+    <div class="modal-content glass-panel" style="max-width: 600px;">
+      <button class="modal-close-btn" id="close-plugin-modal">✕</button>
+      <div style="text-align: center; margin-bottom: 20px;">
+        <div style="font-size: 32px; margin-bottom: 6px;">🧩</div>
+        <h3 style="font-size: 19px; font-weight: 700;">Arsitektur Plugin Ekstensibel</h3>
+        <p class="text-muted" style="font-size: 12.5px;">
+          Aplikasi dirancang agar Anda dapat menambah fitur atau modul baru di kemudian hari tanpa perlu melepas (uninstall) sistem!
+        </p>
+      </div>
+
+      <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--accent-cyan); margin-bottom: 8px;">
+        Modul yang Sedang Berjalan:
+      </div>
+      <div id="plugin-list-container"></div>
+
+      <div class="glass-panel" style="background: rgba(14, 18, 28, 0.7); padding: 14px; margin-top: 16px; border-radius: var(--radius-sm);">
+        <div style="font-weight: 700; font-size: 12.5px; color: #a5b4fc; margin-bottom: 6px;">Cara Menambah Modul Baru di Masa Depan:</div>
+        <ol style="font-size: 11.5px; color: var(--text-muted); margin-left: 18px; line-height: 1.6;">
+          <li>Buat folder baru di dalam direktori <code>modules/nama-modul-anda/</code>.</li>
+          <li>Buat kelas modul yang memiliki metode lifecycle <code>init()</code>, <code>mount()</code>, dan <code>unmount()</code>.</li>
+          <li>Daftarkan modul di <code>js/modules.config.js</code> atau panggil <code>registry.register(...)</code>. Modul otomatis muncul di menu dan router!</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="global-toast-container"></div>
+
+  <!-- App Entry Script (Bust Browser Cache) -->
+  <script type="module" src="js/app.js?v=4.0"></script>
+</body>
+</html>

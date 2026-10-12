@@ -1,0 +1,22 @@
+{
+  "name": "All-in-One Utility",
+  "short_name": "AIO Utility",
+  "description": "Modular & Production-Ready All-in-One Utility Web App",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0a0d14",
+  "theme_color": "#0a0d14",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=192&auto=format&fit=crop&q=80",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=512&auto=format&fit=crop&q=80",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
