@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Platform Modular All-in-One: Media Downloader, Productive Tools + Gemini AI, Notifikasi Push",
   "type": "module",
-  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",

@@ -17,11 +17,23 @@ export default async function handler(req, res) {
 
   const targetUrl = req.query?.url || new URL(req.url, 'http://localhost').searchParams.get('url');
 
-  if (!targetUrl) {
-    return res.status(400).json({ error: 'Parameter url diperlukan' });
-  }
+  const sendJson = (statusOrObj, maybeObj) => {
+    let status = 200;
+    let data = statusOrObj;
+    if (typeof statusOrObj === 'number') {
+      status = statusOrObj;
+      data = maybeObj;
+    }
+    if (typeof res.status === 'function') {
+      return res.status(status).json(data);
+    }
+    res.writeHead(status, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+    return res.end(JSON.stringify(data));
+  };
 
-  const sendJson = (obj) => res.status(200).json(obj);
+  if (!targetUrl) {
+    return sendJson(400, { error: 'Parameter url diperlukan' });
+  }
 
   try {
     /* ----------------------------------------------------------
@@ -191,6 +203,6 @@ export default async function handler(req, res) {
     });
 
   } catch (err) {
-    return res.status(500).json({ error: err.message });
+    return sendJson(500, { error: err.message });
   }
 }

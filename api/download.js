@@ -63,7 +63,8 @@ export default async function handler(req, res) {
   const finalFileName = `${cleanTitle}.${ext}`;
 
   if (!targetUrl) {
-    return res.status(400).json({ error: 'Parameter url diperlukan' });
+    res.writeHead(400, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+    return res.end(JSON.stringify({ error: 'Parameter url diperlukan' }));
   }
 
   let mimeType = ext === 'mp3' ? 'audio/mpeg' : 'video/mp4';
@@ -150,7 +151,11 @@ export default async function handler(req, res) {
           const targetDownloadUrl = cData.url;
           if (targetDownloadUrl) {
             // Redirect langsung ke CDN stream dengan kecepatan maksimal
-            return res.redirect(302, targetDownloadUrl);
+            if (typeof res.redirect === 'function') {
+              return res.redirect(302, targetDownloadUrl);
+            }
+            res.writeHead(302, { Location: targetDownloadUrl });
+            return res.end();
           }
         }
       } catch (_) {}
