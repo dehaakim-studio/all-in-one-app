@@ -1,21 +1,15 @@
 {
   "name": "all-in-one-utility",
   "version": "1.0.0",
-  "description": "Modular & Production-Ready All-in-One Utility Web App (Downloader, Frame Studio, Productive Tools + Gemini AI, Notifications)",
+  "description": "Platform Modular All-in-One: Media Downloader, Productive Tools + Gemini AI, Notifikasi Push",
   "type": "module",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "build": "echo 'Static site - no build needed'"
   },
-  "keywords": [
-    "utility",
-    "modular",
-    "downloader",
-    "frame-studio",
-    "gemini-ai",
-    "pwa"
-  ],
-  "author": "Antigravity Expert Full-Stack Developer",
+  "keywords": ["utility", "modular", "downloader", "gemini-ai", "pwa"],
+  "author": "dehaakim-studio",
   "license": "MIT"
 }
