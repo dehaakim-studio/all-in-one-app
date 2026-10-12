@@ -1,23 +1,29 @@
 /* ==========================================================================
-   RESPONSIVE DESIGN & MOBILE BAR
+   ALL-IN-ONE UTILITY - RESPONSIVE & MOBILE DESIGN SYSTEM
+   Optimized for: Phones (iOS & Android, Notch/Dynamic Island), Tablets, Desktops
    ========================================================================== */
 
-/* Mobile Bottom Navigation Bar */
+/* --------------------------------------------------------------------------
+   1. MOBILE BOTTOM NAVIGATION BAR (Native App Feel)
+   -------------------------------------------------------------------------- */
 .mobile-bottom-nav {
   display: none;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 64px;
+  height: calc(64px + env(safe-area-inset-bottom, 0px));
+  padding-bottom: env(safe-area-inset-bottom, 0px);
   background: rgba(14, 18, 28, 0.94);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-top: 1px solid var(--border-color);
   z-index: 50;
   justify-content: space-around;
   align-items: center;
-  padding: 0 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .mobile-nav-item {
@@ -28,17 +34,20 @@
   gap: 3px;
   color: var(--text-dim);
   text-decoration: none;
-  font-size: 10px;
+  font-size: 10.5px;
   font-weight: 600;
-  padding: 6px 10px;
+  padding: 6px 12px;
+  min-height: 48px;
   border-radius: var(--radius-sm);
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .mobile-nav-item .mobile-nav-icon {
-  font-size: 19px;
+  font-size: 20px;
   line-height: 1;
+  transition: transform 0.2s ease;
 }
 
 .mobile-nav-item.active {
@@ -52,32 +61,51 @@
 .mobile-nav-item.active::after {
   content: '';
   position: absolute;
-  bottom: 2px;
-  width: 16px;
+  bottom: 3px;
+  width: 18px;
   height: 3px;
   background: var(--accent-cyan);
   border-radius: 10px;
+  box-shadow: 0 0 8px var(--accent-cyan-glow);
 }
 
-/* Media Queries */
+/* --------------------------------------------------------------------------
+   2. TABLET RESPONSIVENESS (≤ 1024px)
+   -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
   :root {
     --sidebar-width: 240px;
   }
   
   .module-viewport {
-    padding: 20px 20px 80px;
+    padding: 22px 20px 84px;
+  }
+
+  .vehicle-dashboard-columns {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
   }
 }
 
+/* --------------------------------------------------------------------------
+   3. MOBILE DEVICES (≤ 768px) - Handheld Smartphones
+   -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
+  /* Prevent iOS auto-zoom when focusing inputs */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+
+  /* App Layout & Drawer Navigation */
   .app-sidebar {
     position: fixed;
     left: 0;
     top: 0;
     bottom: 0;
+    width: min(290px, 82vw);
     transform: translateX(-100%);
-    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 16px 0 40px rgba(0, 0, 0, 0.65);
+    z-index: 60;
   }
 
   .app-sidebar.open {
@@ -88,9 +116,10 @@
     display: none;
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(4px);
-    z-index: 39;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 55;
   }
 
   .sidebar-backdrop.active {
@@ -98,33 +127,236 @@
   }
 
   .mobile-menu-toggle {
-    display: flex;
+    display: flex !important;
+    min-height: 40px;
+    min-width: 40px;
+    align-items: center;
+    justify-content: center;
   }
 
   .mobile-bottom-nav {
-    display: flex;
+    display: flex !important;
   }
 
+  /* Header Optimization */
   .app-header {
     padding: 0 16px;
+    height: calc(62px + env(safe-area-inset-top, 0px));
+    padding-top: env(safe-area-inset-top, 0px);
   }
 
+  .header-page-title h2 {
+    font-size: 16.5px;
+  }
+
+  .header-page-title p {
+    font-size: 11px;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Module Viewport - Proper spacing above bottom nav */
   .module-viewport {
-    padding: 16px 14px 90px;
+    padding: 16px 14px calc(88px + env(safe-area-inset-bottom, 0px));
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Cards & Forms on Mobile */
+  .card {
+    padding: 16px 14px;
+    border-radius: var(--radius-md);
+  }
+
+  .card-header {
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
   }
 
   .form-row {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
 
+  .btn {
+    min-height: 44px;
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  /* Toast notification position */
   .toast-container {
-    left: 16px;
-    right: 16px;
-    bottom: 74px;
+    left: 14px;
+    right: 14px;
+    bottom: calc(74px + env(safe-area-inset-bottom, 0px));
   }
 
   .toast {
     min-width: unset;
     width: 100%;
+    padding: 12px 14px;
+  }
+
+  /* Modals on Mobile - Bottom sheet or full-width modal */
+  .modal-overlay {
+    padding: 12px;
+    align-items: flex-end;
+  }
+
+  .modal-content {
+    padding: 20px 16px calc(20px + env(safe-area-inset-bottom, 0px));
+    max-height: 88vh;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    width: 100%;
+  }
+
+  /* --- MODULE 1: DOWNLOADER MOBILE ADAPTATIONS --- */
+  .url-input-wrapper {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  .url-input-box {
+    width: 100% !important;
+  }
+
+  .url-input-wrapper .btn {
+    width: 100% !important;
+  }
+
+  .media-preview-card {
+    grid-template-columns: 1fr !important;
+    padding: 14px !important;
+    gap: 14px !important;
+  }
+
+  .media-thumbnail-container {
+    height: auto !important;
+    aspect-ratio: 16 / 9 !important;
+    max-height: 220px;
+  }
+
+  .format-options-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .directory-banner {
+    padding: 12px 14px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .directory-banner .btn {
+    width: 100%;
+  }
+
+  .progress-stats-row {
+    flex-wrap: wrap;
+    gap: 6px 12px;
+  }
+
+  /* --- MODULE 2: PRODUCTIVE TOOLS (SERVIS & OLI) MOBILE ADAPTATIONS --- */
+  .vehicle-selector-bar {
+    padding: 12px 14px !important;
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: 10px !important;
+  }
+
+  .vehicle-chips-list {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .vehicle-chips-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .vehicle-profile-banner {
+    padding: 14px !important;
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 10px;
+  }
+
+  .component-status-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .component-card {
+    padding: 10px 12px !important;
+  }
+
+  .service-countdown-box {
+    padding: 14px !important;
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+
+  .countdown-main {
+    width: 100%;
+  }
+
+  .service-countdown-box .btn {
+    width: 100%;
+  }
+
+  .mandatory-rule-banner {
+    padding: 12px 14px !important;
+    gap: 10px !important;
+  }
+
+  /* --- MODULE 3: NOTIFICATIONS MOBILE ADAPTATIONS --- */
+  .permission-banner-card {
+    padding: 14px !important;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .permission-banner-card .btn {
+    width: 100%;
+  }
+
+  .urgent-service-popup {
+    top: calc(12px + env(safe-area-inset-top, 0px));
+    right: 12px;
+    left: 12px;
+    width: auto !important;
+    max-width: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. ULTRA-SMALL PHONES (≤ 380px, e.g. iPhone SE, Small Androids)
+   -------------------------------------------------------------------------- */
+@media (max-width: 380px) {
+  .format-options-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .component-status-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .header-page-title h2 {
+    font-size: 15px;
+  }
+
+  .mobile-nav-item {
+    font-size: 9.5px;
+    padding: 4px 6px;
+  }
+
+  .mobile-nav-item .mobile-nav-icon {
+    font-size: 18px;
   }
 }
