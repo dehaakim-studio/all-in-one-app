@@ -64,9 +64,15 @@
 
 .url-input-box input {
   padding-left: 44px;
-  padding-right: 90px;
+  padding-right: 98px;
   height: 52px;
   font-size: 15px;
+  text-overflow: ellipsis;
+}
+
+.url-input-box input::placeholder {
+  color: var(--text-dim);
+  font-size: 13.5px;
 }
 
 .url-icon {
@@ -76,13 +82,21 @@
   transform: translateY(-50%);
   font-size: 18px;
   color: var(--text-dim);
+  pointer-events: none;
 }
 
 .btn-paste {
   position: absolute;
-  right: 10px;
+  right: 8px;
   top: 50%;
   transform: translateY(-50%);
+  z-index: 2;
+  font-size: 12px;
+  padding: 6px 12px;
+  background: rgba(30, 41, 59, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-sm);
+  color: #e2e8f0;
 }
 
 .platform-pill-list {

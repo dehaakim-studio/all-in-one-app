@@ -42,7 +42,7 @@ export class DownloaderView {
           <div class="url-input-wrapper">
             <div class="url-input-box">
               <span class="url-icon">🔗</span>
-              <input type="url" id="media-url-input" class="form-control" placeholder="Contoh: https://youtu.be/xxx atau https://vt.tiktok.com/xxx">
+              <input type="url" id="media-url-input" class="form-control" placeholder="Tempel tautan video atau audio di sini...">
               <button class="btn btn-secondary btn-sm btn-paste" id="btn-paste-url" title="Tempel dari Clipboard">📋 Paste</button>
             </div>
             <button class="btn btn-primary" id="btn-analyze-url">
